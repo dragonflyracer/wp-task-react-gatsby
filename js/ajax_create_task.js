@@ -1,8 +1,9 @@
-document.getElementById("create_task").addEventListener("click", create_task, false)
-
+document.getElementById("create_task").addEventListener("click", create_task, false);
+console.log('avant');
 function create_task(e)
 {
-
+  e.preventDefault();
+  console.log('après');
   var titre_tache = document.getElementById("titre_tache").value;
   var description_tache = document.getElementById("description_tache").value;
   console.log(titre_tache);
