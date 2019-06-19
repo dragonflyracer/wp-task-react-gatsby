@@ -36,9 +36,9 @@ for (let i = 0; i < all_task.length; i++) {
                    console.log(lastObj);
                    
                    for (var i = 0; i<myObj.length; i++)
-                    {console.log('caca');
+                    {console.log(i);
                         if(i===myObj.length-1){
-                            console.log(myObj[i].post_content+" blbla");
+                            console.log( myObj[i].post_title+" blbla");
                                 liste_taches.innerHTML += '<div style=text-align:center;margin-bottom:1rem;border-style:outset;width:25%;font-weight:900;font-size:1.5rem;background-color:black;color:white;>' + myObj[i].post_title + '<br><div style=width:100%;font-weight:100;font-size:1.2rem;background-color:white;color:black;>' + myObj[i].post_content + '</div></div>';       
                         }
                     }
@@ -52,4 +52,3 @@ for (let i = 0; i < all_task.length; i++) {
         xhr.open('GET', 'http://localhost/wp-task-jpl/wp-json/taskManager/v0/task', true);
         xhr.send();        
     }
-
