@@ -3,9 +3,12 @@ var liste_taches = document.getElementById("liste_taches");
 
 for (let i = 0; i < all_task.length; i++) {
 
-    all_task[i].addEventListener("click", function (e) 
-    {
+    all_task[i].addEventListener("click", mettreAjour(), false);
+}
  
+
+
+        function mettreAjour(){
         var xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function () 
@@ -18,16 +21,35 @@ for (let i = 0; i < all_task.length; i++) {
                 console.log(myObj);
                
                 // boucle pour afficher les titres de toutes les tâches
+                if(liste_taches.innerHTML === ""){
+                    for (var i = 0; i<myObj.length; i++)
+                    {
+                        liste_taches.innerHTML += '<div style=text-align:center;margin-bottom:1rem;border-style:outset;width:25%;font-weight:900;font-size:1.5rem;background-color:black;color:white;>' + myObj[i].post_title + '<br><div style=width:100%;font-weight:100;font-size:1.2rem;background-color:white;color:black;>' + myObj[i].post_content + '</div></div>';
+                        
+                    
+                    }
+                }
+                else{
 
-                for (var i = 0; i<myObj.length; i++)
-                {
-                    liste_taches.innerHTML += '</br>' + myObj[i].post_title;
+                   console.log('connard');
+                   var lastObj = myObj.length;
+                   console.log(lastObj);
+                   
+                   for (var i = 0; i<myObj.length; i++)
+                    {console.log('caca');
+                        if(i===myObj.length-1){
+                            console.log(myObj[i].post_content+" blbla");
+                                liste_taches.innerHTML += '<div style=text-align:center;margin-bottom:1rem;border-style:outset;width:25%;font-weight:900;font-size:1.5rem;background-color:black;color:white;>' + myObj[i].post_title + '<br><div style=width:100%;font-weight:100;font-size:1.2rem;background-color:white;color:black;>' + myObj[i].post_content + '</div></div>';       
+                        }
+                    }
+                    
                 }
             }            
         }
+    
 
         //Envoie le titre du film ou de la série dans la page likes.php
         xhr.open('GET', 'http://localhost/wp-task-jpl/wp-json/taskManager/v0/task', true);
         xhr.send();        
-    });
-}
+    }
+

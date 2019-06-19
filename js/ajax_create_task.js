@@ -1,3 +1,4 @@
+var liste_taches = document.getElementById("liste_taches");
 document.getElementById("create_task").addEventListener("click", create_task, false);
 console.log('avant');
 function create_task(e)
@@ -20,15 +21,21 @@ function create_task(e)
       {
           if (xhr.status == 200)
           {
-            console.log(xhr.responseText);
-            console.log('la tâche est créée');
-
+            // var myObj = JSON.parse(this.responseText);
+            // console.log(xhr.responseText);
+            // console.log('la tâche est créée');
+            // for (var i = 0; i<myObj.length; i++)
+            // {
+           
+            // }
             // appel à la fonction 1 pour réainitialiser les tâches  
           };
       };            
   };
 
- 
+  // xhr.open('GET', 'http://localhost/wp-task-jpl/wp-json/taskManager/v0/task', true);
   xhr.send(nouvelle_tache);
-       
+  // liste_taches.innerHTML = "";
+  setTimeout(mettreAjour, 3000)
+ 
 }
