@@ -6,12 +6,13 @@ function create_task(e)
   console.log('après');
   var titre_tache = document.getElementById("titre_tache").value;
   var description_tache = document.getElementById("description_tache").value;
-  console.log(titre_tache);
 
   var nouvelle_tache = JSON.stringify({'post_title': titre_tache, 'post_content': description_tache});
-  console.log(nouvelle_tache);
+  // console.log(nouvelle_tache);
 
   var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost/wp-task-jpl/wp-json/taskManager/v0/task', true);
+  xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () 
   {
@@ -19,6 +20,7 @@ function create_task(e)
       {
           if (xhr.status == 200)
           {
+            console.log(xhr.responseText);
             console.log('la tâche est créée');
 
             // appel à la fonction 1 pour réainitialiser les tâches  
@@ -26,8 +28,7 @@ function create_task(e)
       };            
   };
 
-  xhr.open('POST', 'http://localhost/wp-task-jpl/wp-json/taskManager/v0/task', true);
-  xhr.setRequestHeader("Content-Type", "application/json");
+ 
   xhr.send(nouvelle_tache);
        
 }
