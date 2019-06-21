@@ -7,8 +7,9 @@ function create_task(e)
   console.log('après');
   var titre_tache = document.getElementById("titre_tache").value;
   var description_tache = document.getElementById("description_tache").value;
+  var utilisateur= document.getElementById("utilisateur").value;
 
-  var nouvelle_tache = JSON.stringify({'post_title': titre_tache, 'post_content': description_tache});
+  var nouvelle_tache = JSON.stringify({'post_title': titre_tache, 'post_content': description_tache, 'post_author' : utilisateur});
   // console.log(nouvelle_tache);
 
   var xhr = new XMLHttpRequest();
