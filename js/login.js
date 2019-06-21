@@ -1,15 +1,13 @@
 var liste_taches = document.getElementById("liste_taches");
-document.getElementById("create_task").addEventListener("click", create_task, false);
-console.log('avant');
-function create_task(e)
+document.getElementById("login").addEventListener("click", seLogguer, false);
+
+function seLogguer(e)
 {
   e.preventDefault();
-  console.log('après');
-  var titre_tache = document.getElementById("titre_tache").value;
-  var description_tache = document.getElementById("description_tache").value;
-  var utilisateur= document.getElementById("utilisateur").value;
+  var userForm = document.getElementById("user").value;
+  var passwordForm = document.getElementById("password").value;
 
-  var nouvelle_tache = JSON.stringify({'post_title': titre_tache, 'post_content': description_tache, 'post_author' : utilisateur});
+  var infoLoggin = JSON.stringify({'user': userForm, 'password': passwordForm});
   // console.log(nouvelle_tache);
 
   var xhr = new XMLHttpRequest();
@@ -34,8 +32,7 @@ function create_task(e)
       };            
   };
 
-  // xhr.open('GET', 'http://localhost/wp-task-jpl/wp-json/taskManager/v0/task', true);
-  xhr.send(nouvelle_tache);
+  xhr.send(infoLoggin);
   // liste_taches.innerHTML = "";
   setTimeout(mettreAjour, 3000)
  
